@@ -13,8 +13,36 @@ public class Main {
      * This function uses selection sort to sort the arrayList.
      * @param arrayList the ArrayList to be sorted. arrayList cannot contain duplicates
      */
-    public static void selectionSort(ArrayList<Integer> arrayList) {
-        throw new UnsupportedOperationException("SelectionSort() has not been implemented yet");
+    public static void selectionSort(ArrayList<Integer> arrayList)
+    {
+        if(arrayList == null)
+        {
+            return;
+        }
+
+        //find the min
+        for(int j = 0; j < arrayList.size(); j++)
+        {
+            int min = arrayList.get(j);
+            int smallestIndex = j;
+            for(int i = j + 1; i < arrayList.size(); i++)
+            {
+                if(arrayList.get(i) < min)
+                {
+                    min = arrayList.get(i);
+                    smallestIndex = i;
+                }
+            }
+
+            //swap min with first variable
+            if(smallestIndex == j)
+            {
+                continue;
+            }
+            int temp = arrayList.get(j);
+            arrayList.set(j, min);
+            arrayList.set(smallestIndex, temp);
+        }
     }
 
     /**
@@ -43,34 +71,45 @@ public class Main {
      * This function uses MergeSort to sort the arrayList.
      * @param arrayList the ArrayList to be sorted. arrayList cannot contain duplicates
      */
-    public static void mergeSort(ArrayList<Integer> arrayList) {
-        throw new UnsupportedOperationException("mergeSort() has not been implemented yet");
+    public static void mergeSort(ArrayList<Integer> arrayList)
+    {
+
     }
 
     /**
      * This function is a helper function used to help you implement mergeSort.
-     * The function sorts the portion of arrayList specified by the range [lo, hi). The range
-     * includes lo but excludes hi (arrayList[lo] is the first element in the range, but
+     * The function sorts the portion of arrayList specified by the range [low, hi). The range
+     * includes low but excludes hi (arrayList[low] is the first element in the range, but
      * arrayList[hi] is the first element after the last element in the range).
      * @param arrayList the ArrayList to be sorted.
-     * @param lo the index of the first element in the range
+     * @param low the index of the first element in the range
      * @param hi the index of the last element in the range + 1.
      */
-    public static void sort(ArrayList<Integer> arrayList, int lo, int hi) {
-        throw new UnsupportedOperationException("sort() has not been implemented yet");
+    public static void sort(ArrayList<Integer> arrayList, int low, int hi)
+    {
+        if(arrayList.size() == 1 || arrayList.size() == 0)
+        {
+            return;
+        }
+        if(hi > arrayList.size())
+        {
+            return ;
+        }
+
+        return sort(arrayList.size(), low + 1, hi + 1);
     }
 
     /**
      * This function is a helper function used to help you implement mergeSort.
      * The function merges two consecutive, sorted ranges in the arrayList into one sorted range. The ranges
-     * are specified as [lo, mid) and [mid, hi). Each range includes the first element, but excludes
+     * are specified as [low, mid) and [mid, hi). Each range includes the first element, but excludes
      * the last element (the same way as in sort()).
      * @param arrayList the ArrayList to be sorted.
-     * @param lo the index of the first element in the first range
+     * @param low the index of the first element in the first range
      * @param mid the boundary point of the two ranges. arrayList[mid] is in the second range.
      * @param hi the index of the last element in the second range + 1.
      */
-    public static void merge(ArrayList<Integer> arrayList, int lo, int mid, int hi) {
+    public static void merge(ArrayList<Integer> arrayList, int low, int mid, int hi) {
         throw new UnsupportedOperationException("merge() has not been implemented yet");
     }
 }
