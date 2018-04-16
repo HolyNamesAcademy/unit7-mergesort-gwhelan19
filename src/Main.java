@@ -73,7 +73,7 @@ public class Main {
      */
     public static void mergeSort(ArrayList<Integer> arrayList)
     {
-
+       // mergeSort(arrayList, 0, arrayList.size());
     }
 
     /**
@@ -91,12 +91,17 @@ public class Main {
         {
             return;
         }
-        if(hi > arrayList.size())
+        for(int i = 0; i < arrayList.size(); i++)
         {
-            return ;
+            if(hi - low < 1)
+            {
+                return;
+            }
+            else
+            {
+                sort(arrayList, low + 1, hi - 1);
+            }
         }
-
-        return sort(arrayList.size(), low + 1, hi + 1);
     }
 
     /**
