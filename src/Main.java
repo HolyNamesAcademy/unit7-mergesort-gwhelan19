@@ -133,7 +133,7 @@ public class Main {
                 tempArray.add(arrayList.get(j));
                 j++;
             }
-            break;
+            
         }
     }
 }
