@@ -73,7 +73,7 @@ public class Main {
      */
     public static void mergeSort(ArrayList<Integer> arrayList)
     {
-       // mergeSort(arrayList, 0, arrayList.size());
+
     }
 
     /**
@@ -87,21 +87,14 @@ public class Main {
      */
     public static void sort(ArrayList<Integer> arrayList, int low, int hi)
     {
-        if(arrayList.size() == 1 || arrayList.size() == 0)
+        if(hi - low <= 1)
         {
             return;
         }
-        for(int i = 0; i < arrayList.size(); i++)
-        {
-            if(hi - low < 1)
-            {
-                return;
-            }
-            else
-            {
-                sort(arrayList, low + 1, hi - 1);
-            }
-        }
+        int mid = (hi + low) / 2;
+        sort(arrayList, low, mid);
+        sort(arrayList, mid, hi);
+        merge(arrayList, low, mid, hi);
     }
 
     /**
@@ -114,7 +107,33 @@ public class Main {
      * @param mid the boundary point of the two ranges. arrayList[mid] is in the second range.
      * @param hi the index of the last element in the second range + 1.
      */
-    public static void merge(ArrayList<Integer> arrayList, int low, int mid, int hi) {
-        throw new UnsupportedOperationException("merge() has not been implemented yet");
+    public static void merge(ArrayList<Integer> arrayList, int low, int mid, int hi)
+    {
+        ArrayList<Integer> tempArray = new ArrayList<Integer>();
+
+        int i = low;
+        int j = mid;
+        while(i < mid || j < hi)
+        {
+            if(j == hi)
+            {
+                tempArray.add(arrayList.get(i));
+            }
+            else if(i == mid)
+            {
+                tempArray.add(arrayList.get(j));
+            }
+            else if(arrayList.get(i) < arrayList.get(j))
+            {
+                tempArray.add(arrayList.get(i));
+                i++;
+            }
+            else
+            {
+                tempArray.add(arrayList.get(j));
+                j++;
+            }
+            break;
+        }
     }
 }
